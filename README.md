@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Atacana Case Study
 
-## Getting Started
+This repository contains the base code for the Case Study **Building an Accessible Pharma Trials Search Interface**. It was deployed to production using Vercel and be accessed on https://atacana-rafael-matte.vercel.app/search
 
-First, run the development server:
+To run the project in development mode, run:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm i && npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000/search](http://localhost:3000/search) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Overview
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Since the challenge required using React and involved fetching data of a database, I decided to use Next.js, since with a single application, we can resolve both requirements. The project has a single page that allows users to navigate through trials information in groups of up to 10, and also search for a specific trial by typing its code or filter by status and/or phase.
 
-## Learn More
+Page: **/search**  
+Api: **/api/get**, { code: required }  
+Api: **/api/filter**, { page : required, status: optional, phase: optional }
 
-To learn more about Next.js, take a look at the following resources:
+Since the csv database is light, with approximately 4200 lines or 770kb, I decided to use the file itself as the database, keeping the project much simpler. The database is read with the help of the third party library [fast-csv](https://www.npmjs.com/package/fast-csv), which uses the [Node File System](https://nodejs.org/api/fs.html) to create a read stream and parse the file. The file is read only once per route, and then **saved in the variable data** on the server, so subsequently fetches only interact with the project's memory and are much faster.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![wireframe](https://github.com/user-attachments/assets/3a0b6403-1e16-493c-b319-c7b3cbb8e31d)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Performance
 
-## Deploy on Vercel
+The search page is rendered on the server with the first 10 trials already populated, which doesn't trigger CLS for the user. In the client-side, React states and useEffects were used as little as possible to stop unnecessary rerenders.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The results are always limited to 10, so the payload is lighter.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The client-side fetching has caching, so repeated requests will use the browser's disk, and even when it doesn't, the response timings are around 150 to 250ms, which is relatively fast.
+
+### Accessibility
+
+Although the page is very simple, semantic HTML was used for every section, and the layout is very intuitive.
+
+### Security
+
+Even though the api routes are open to anyone, they both validate the format of the parameters, and always search for the values in the memory, never reading the database unnecessarily.
+
+### Final Thoughts and improvements
+
+Unfortunately due to the limited time I had this week, I couldn't implement everything I wanted. The overall design of the page is very simple, and is lacking at least a header and a footer. Pages for error 404 and 500 were also not implemented, and finally the api's performance although not bad could be improved with server-side caching.
+
+Having said that, I had a good time doing this challenge and would appreciate any feedback. Thank you!
