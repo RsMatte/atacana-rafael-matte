@@ -3,15 +3,56 @@ main {
   justify-content: center;
   display: flex;
   flex-direction: column;
-  grid-gap: 24px;
+  gap: 24px;
 }
 
 h1 {
   color: var(--font);
-  font-size: 18px;
+  font-size: 32px;
+  margin-top: 32px;
 }
 
 h2 {
   color: var(--font);
-  font-size: 14px;
+  font-size: 24px;
+}
+
+.button-primary {
+  background-color: var(--primary-red);
+  border: 0;
+  border-radius: 99px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 16px 32px;
+
+  @media (max-width: 950px) {
+    padding: 8px 16px;
+  }
+}
+
+.button-primary:hover {
+  background-color: var(--secondary-red);
+}
+
+.button-secondary {
+  background-color: white;
+  border: 1px solid var(--primary-red);
+  border-radius: 99px;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 16px 32px;
+
+  @media (max-width: 950px) {
+    padding: 0px 16px;
+  }
+}
+
+.button-secondary:hover {
+  color: var(--secondary-red);
+}
+
+.button-secondary:disabled {
+  color: var(--primary-gray);
+  border: 1px solid var(--primary-gray);
 }

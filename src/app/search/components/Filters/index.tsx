@@ -1,3 +1,5 @@
+import './styles.css';
+
 import { phaseList, statusList } from './data';
 import useFilters from './hooks/useFilters';
 import type { FilterProps } from './types';
@@ -21,18 +23,18 @@ const Filters = ({
   } = useFilters({ updateData, resetData });
 
   return (
-    <>
-      <form onSubmit={handleSearchSubmit}>
+    <div className="filter">
+      <form className="filter-form" onSubmit={handleSearchSubmit}>
         <input
           type="text"
-          placeholder="Search for Trial Code"
+          placeholder="Search by Code"
           ref={inputElement}
           required
         />
-        <button>Search</button>
+        <button className="button-primary">Search</button>
       </form>
 
-      <div>
+      <div className="filter-select">
         <select value={status} onChange={handleStatusChange} name="status">
           {statusList.map((sts) => (
             <option key={sts.text} value={sts.value}>
@@ -48,18 +50,28 @@ const Filters = ({
             </option>
           ))}
         </select>
+        <button className="button-primary" onClick={resetFilters}>
+          Reset
+        </button>
       </div>
 
-      <div>
-        <button disabled={isPreviousPageDisabled} onClick={clickPreviousPage}>
-          previous page {'<'}
+      <div className="filter-pagination">
+        <button
+          className="button-secondary"
+          disabled={isPreviousPageDisabled}
+          onClick={clickPreviousPage}
+        >
+          ‹
         </button>
-        <button disabled={isNextPageDisabled} onClick={clickNextPage}>
-          next page {'>'}
+        <button
+          className="button-secondary"
+          disabled={isNextPageDisabled}
+          onClick={clickNextPage}
+        >
+          ›
         </button>
       </div>
-      <button onClick={resetFilters}>Reset Filters</button>
-    </>
+    </div>
   );
 };
 

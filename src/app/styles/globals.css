@@ -1,6 +1,9 @@
 :root {
   --background: #ffffff;
   --font: #3a3b40;
+  --primary-red: #b22028;
+  --secondary-red: #ec1722;
+  --primary-gray: #d2d2d2;
 }
 
 html,
