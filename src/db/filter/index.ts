@@ -18,6 +18,7 @@ export const getFilteredData = async ({
   const filteredData = [];
 
   let count = 0;
+  const lowerLimit = (page - 1) * LIMIT;
   const higherLimit = page * LIMIT;
 
   for (let i = 0; i < data.length; i++) {
@@ -32,5 +33,5 @@ export const getFilteredData = async ({
     }
   }
 
-  return filteredData.slice(-LIMIT);
+  return filteredData.slice(lowerLimit, higherLimit);
 };
