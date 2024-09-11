@@ -2,7 +2,6 @@ import { useRef, useState } from 'react';
 import { fetchTrialByCode, fetchTrialList } from '../api/api';
 import { UseFilterProps } from '../types';
 
-const codeRegex = new RegExp('^NCT[0-9]{8}$');
 const firstPage = 1;
 
 const useFilters = ({ updateData, resetData }: UseFilterProps) => {
@@ -17,7 +16,10 @@ const useFilters = ({ updateData, resetData }: UseFilterProps) => {
     e.preventDefault();
     const code = inputElement.current?.value;
 
-    if (!code || !code.trim().match(codeRegex)) return;
+    if (!code) {
+      inputElement.current?.reportValidity();
+      return;
+    }
 
     fetchTrialByCode({ code }).then((trial) => {
       updateData([trial]);

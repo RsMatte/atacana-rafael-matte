@@ -20,10 +20,11 @@
     border-radius: 99px;
     color: var(--font);
     font-weight: bold;
-    max-width: 150px;
+    min-width: 235px;
     padding: 16px;
 
-    @media (max-width: 950px) {
+    @media (max-width: 1150px) {
+      min-width: 220px;
       padding: 8px;
     }
   }
@@ -42,7 +43,7 @@
     font-weight: bold;
     padding: 16px;
 
-    @media (max-width: 950px) {
+    @media (max-width: 1150px) {
       padding: 8px;
     }
   }
@@ -56,7 +57,7 @@
     font-size: 32px;
     padding: 0px 32px;
 
-    @media (max-width: 950px) {
+    @media (max-width: 1150px) {
       padding: 0px 16px;
     }
   }

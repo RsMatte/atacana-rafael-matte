@@ -27,8 +27,9 @@ const Filters = ({
       <form className="filter-form" onSubmit={handleSearchSubmit}>
         <input
           type="text"
-          placeholder="Search by Code"
+          placeholder="Search by code (NCT00000000)"
           ref={inputElement}
+          pattern="NCT[0-9]{8}"
           required
         />
         <button className="button-primary">Search</button>
