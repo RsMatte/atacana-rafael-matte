@@ -2,7 +2,7 @@ import fs from 'fs';
 import { parse } from 'fast-csv';
 import type { Trial } from '@/app/types';
 
-const filePath = 'src/db/trialsDatabase.csv';
+const filePath = process.cwd() + '/src/db/trialsDatabase.csv';
 const defaultOptions = { headers: true };
 
 let data: Trial[] | null = null;
