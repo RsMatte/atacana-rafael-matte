@@ -3,7 +3,7 @@ import './styles.css';
 import '../styles/globals.css';
 
 export const metadata: Metadata = {
-  title: 'Atacana Group',
+  title: 'Atacana | Search',
   description: 'Search for Pharma Trials',
 };
 
