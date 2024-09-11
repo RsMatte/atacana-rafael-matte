@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { parse } from 'fast-csv';
-import type { Trial } from '@/app/types';
+import type { Trial } from '@/types';
 
 const filePath = process.cwd() + '/src/db/trialsDatabase.csv';
 const defaultOptions = { headers: true };

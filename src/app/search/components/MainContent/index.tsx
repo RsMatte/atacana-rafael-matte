@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Table from '../Table';
 import Filters from '../Filters';
 import type { MainContentProps } from './types';
-import type { Trial } from '@/app/types';
+import type { Trial } from '@/types';
 
 const limit = 10;
 

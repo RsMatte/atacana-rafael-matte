@@ -1,4 +1,4 @@
-import { Trial } from '@/app/types';
+import { Trial } from '@/types';
 import type { FetchTrialByCode, FetchTrialList } from '../types';
 
 export const fetchTrialByCode = ({

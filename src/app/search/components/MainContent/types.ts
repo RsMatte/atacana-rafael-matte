@@ -1,4 +1,4 @@
-import { Trial } from '@/app/types';
+import { Trial } from '@/types';
 
 export type MainContentProps = {
   initialData: Trial[];
