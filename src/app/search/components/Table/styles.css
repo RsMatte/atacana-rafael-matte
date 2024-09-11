@@ -1,5 +1,5 @@
 .table-wrapper {
-  width: 90%;
+  width: 95%;
 
   @media (max-width: 770px) {
     overflow: auto;

@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  gap: 90px;
+  gap: 60px;
   width: auto;
 
   @media (max-width: 1150px) {
@@ -12,21 +12,23 @@
 }
 
 .filter-form {
+  align-items: center;
   display: flex;
   gap: 8px;
+
+  label {
+    @media (max-width: 1150px) {
+      font-size: 12px;
+    }
+  }
 
   input {
     border: 1px solid var(--primary-gray);
     border-radius: 99px;
     color: var(--font);
     font-weight: bold;
-    min-width: 235px;
+    max-width: 130px;
     padding: 16px;
-
-    @media (max-width: 1150px) {
-      min-width: 220px;
-      padding: 8px;
-    }
   }
 }
 

@@ -25,9 +25,12 @@ const Filters = ({
   return (
     <div className="filter">
       <form className="filter-form" onSubmit={handleSearchSubmit}>
+        <label htmlFor="code">Search by code:</label>
         <input
+          id="code"
+          name="code"
           type="text"
-          placeholder="Search by code (NCT00000000)"
+          placeholder="NCT00000000"
           ref={inputElement}
           pattern="NCT[0-9]{8}"
           required
