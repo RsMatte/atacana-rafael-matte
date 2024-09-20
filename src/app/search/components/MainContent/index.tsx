@@ -1,29 +1,39 @@
 'use client';
 
-import { useState } from 'react';
-import Table from '../Table';
-import Filters from '../Filters';
-import type { MainContentProps } from './types';
-import type { Trial } from '@/types';
+import { Formik } from 'formik';
 
-const limit = 10;
+import useTrialsData from './hooks/useTrialsData';
+import type { MainContentProps } from './types';
+import Pagination from '../Pagination';
+import Table from '../Table';
+import Form from '../Form';
+import { initialValues } from '../Form/data';
 
 const MainContent = ({ initialData }: MainContentProps) => {
-  const [trialsData, setTrialsData] = useState(initialData);
-
-  const updateData = (data: Trial[]) => setTrialsData(data);
-  const resetData = () => setTrialsData(initialData);
-  const isNextPageDisabled = trialsData.length < limit;
+  const {
+    handleFormSubmit,
+    clickPreviousPage,
+    clickNextPage,
+    resetData,
+    currentPage,
+    data,
+    status,
+  } = useTrialsData({ initialData });
 
   return (
-    <>
-      <Filters
-        isNextPageDisabled={isNextPageDisabled}
-        updateData={updateData}
-        resetData={resetData}
-      />
-      <Table trialsData={trialsData} />
-    </>
+    <Formik initialValues={initialValues} onSubmit={handleFormSubmit}>
+      <>
+        <Form resetData={resetData} />
+        <Table trials={data.trials} status={status} />
+        <Pagination
+          clickPreviousPage={clickPreviousPage}
+          clickNextPage={clickNextPage}
+          currentPage={currentPage}
+          trialsData={data}
+          status={status}
+        />
+      </>
+    </Formik>
   );
 };
 

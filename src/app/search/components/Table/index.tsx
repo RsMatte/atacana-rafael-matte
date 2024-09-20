@@ -2,8 +2,14 @@ import './styles.css';
 import { tableHeaders } from './data';
 import type { TableProps } from './types';
 
-const Table = ({ trialsData }: TableProps) => {
-  if (trialsData.length === 0) return <p>No data found</p>;
+const Table = ({ trials, status }: TableProps) => {
+  const isLoading = status === 'loading';
+  const hasError = status === 'error';
+
+  if (isLoading) return <p>loading</p>;
+  if (hasError) return <p>error fetching trials, please try again later</p>;
+
+  if (trials.length === 0) return <p>No data found</p>;
 
   return (
     <div className="table-wrapper">
@@ -26,7 +32,7 @@ const Table = ({ trialsData }: TableProps) => {
           </tr>
         </thead>
         <tbody>
-          {trialsData.map((trial) => (
+          {trials.map((trial) => (
             <tr key={trial.trialCode}>
               <td>{trial.trialCode}</td>
               <td className="table-title">{trial.trialTitle}</td>

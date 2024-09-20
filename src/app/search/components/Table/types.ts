@@ -1,5 +1,7 @@
-import { Trial } from '@/types';
+import type { Trial } from '@/types';
+import type { DataStatus } from '../MainContent/types';
 
 export type TableProps = {
-  trialsData: Trial[];
+  trials: Trial[];
+  status: DataStatus;
 };

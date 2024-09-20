@@ -1,0 +1,13 @@
+.filter-pagination {
+  display: flex;
+  gap: 8px;
+
+  button {
+    font-size: 32px;
+    padding: 0px 32px;
+
+    @media (max-width: 1150px) {
+      padding: 0px 16px;
+    }
+  }
+}
