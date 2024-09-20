@@ -9,7 +9,7 @@ main {
 h1 {
   color: var(--font);
   font-size: 32px;
-  margin-top: 32px;
+  margin-top: 16px;
 }
 
 h2 {
