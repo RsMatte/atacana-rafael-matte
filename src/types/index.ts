@@ -7,3 +7,8 @@ export type Trial = {
   trialStatus: string;
   trialCompletionDate: string;
 };
+
+export type FetchTrialsResponse = {
+  count: number;
+  trials: Trial[];
+};

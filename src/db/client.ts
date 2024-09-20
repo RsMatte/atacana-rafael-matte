@@ -19,7 +19,7 @@ const readCsvFile: () => Promise<Trial[]> = () =>
       .pipe(parse(defaultOptions))
       .on('error', (error) => {
         console.log(error);
-        reject([]);
+        reject(error);
       })
       .on('data', (row) => {
         content.push(row);

@@ -1,8 +1,8 @@
-import { getFilteredData } from '@/db/filter';
+import { getTrials } from '@/db/get';
 import MainContent from './components/MainContent';
 
 export default async function Search() {
-  const data = await getFilteredData({ page: 1 });
+  const data = await getTrials({ page: 1 });
 
   return (
     <main>
