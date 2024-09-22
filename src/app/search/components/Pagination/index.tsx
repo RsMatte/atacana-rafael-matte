@@ -4,6 +4,7 @@ import { FormikContextType, useFormikContext } from 'formik';
 
 import type { PaginationProps } from './types';
 import type { FormValues } from '../Form/types';
+import { useMemo } from 'react';
 
 const firstPage = 1;
 const limit = 10;
@@ -19,18 +20,24 @@ const Pagination = ({
   const { count, trials } = trialsData;
 
   const isLoading = status === 'loading';
-  const isPreviousPageDisabled = isLoading || currentPage === firstPage;
-  const isNextPageDisabled = isLoading || count <= currentPage * limit;
-  const totalPages = Math.ceil(count / limit) || 1;
+  const isPreviousPageDisabled = useMemo(
+    () => isLoading || currentPage === firstPage,
+    [currentPage, isLoading],
+  );
+  const isNextPageDisabled = useMemo(
+    () => isLoading || count <= currentPage * limit,
+    [count, currentPage, isLoading],
+  );
+  const totalPages = useMemo(() => Math.ceil(count / limit) || 1, [count]);
 
-  const getIntervalLabel = () => {
+  const intervalLabel = useMemo(() => {
     if (trials.length === 0) return 'showing 0 results';
 
     const lowerInterval = (currentPage - 1) * limit + 1;
     const higherInterval = lowerInterval + trials.length - 1;
 
     return `showing ${lowerInterval} - ${higherInterval} of ${count} results`;
-  };
+  }, [count, currentPage, trials.length]);
 
   return (
     <div className="pagination">
@@ -51,7 +58,7 @@ const Pagination = ({
           ›
         </button>
       </div>
-      <span className="pagination-results">{getIntervalLabel()}</span>
+      <span className="pagination-results">{intervalLabel}</span>
     </div>
   );
 };
