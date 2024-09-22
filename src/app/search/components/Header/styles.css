@@ -1,14 +1,14 @@
 header {
-  box-shadow: 1px 1px 5px gray;
+  box-shadow: 1px 1px 3px 1px var(--secondary-gray);
   display: flex;
   justify-content: center;
-  padding: 16px 48px;
+  padding: 12px 48px;
   position: sticky;
   top: 0;
   width: 100vw;
 
-  @media (max-width: 570px) {
-    padding: 16px 24px;
+  @media (max-width: 900px) {
+    padding: 12px 36px;
   }
 
   nav {
@@ -17,8 +17,8 @@ header {
       font-size: 18px;
       font-weight: bold;
       text-decoration: none;
-  
-      @media (max-width: 570px) {
+
+      @media (max-width: 900px) {
         font-size: 14px;
       }
     }
@@ -29,7 +29,7 @@ header {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  max-width: 1200px;
+  max-width: 1300px;
   width: 100%;
 }
 
@@ -38,7 +38,7 @@ header {
   height: 45px;
   width: auto;
 
-  @media (max-width: 570px) {
+  @media (max-width: 900px) {
     height: 35px;
   }
 }

@@ -8,8 +8,7 @@ export default async function Search() {
   return (
     <main>
       <Header />
-      <h1>Atacana Group</h1>
-      <h2>Search for Pharma Trials</h2>
+      <h1>Browse Pharma Trials</h1>
       <MainContent initialData={data} />
     </main>
   );

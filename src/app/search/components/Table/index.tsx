@@ -6,26 +6,34 @@ const Table = ({ trials, status }: TableProps) => {
   const isLoading = status === 'loading';
   const hasError = status === 'error';
 
-  if (isLoading) return <p>loading</p>;
-  if (hasError) return <p>error fetching trials, please try again later</p>;
+  if (isLoading)
+    return (
+      <div className="skeleton-wrapper">
+        <div className="table-skeleton" />
+      </div>
+    );
 
-  if (trials.length === 0) return <p>No data found</p>;
+  if (hasError)
+    return (
+      <div className="status-wrapper">
+        <span>Error fetching trials, please try again later</span>
+      </div>
+    );
+
+  if (trials.length === 0)
+    return (
+      <div className="status-wrapper">
+        <span>No data found. Try different filters</span>
+      </div>
+    );
 
   return (
     <div className="table-wrapper">
       <table className="table">
         <thead>
-          <tr>
+          <tr className="table-header">
             {tableHeaders.map((header) => (
-              <th
-                key={header}
-                {...(header === 'Acronym'
-                  ? { className: 'table-acronym' }
-                  : {})}
-                {...(header === 'Complete'
-                  ? { className: 'table-complete' }
-                  : {})}
-              >
+              <th key={header} className={`table-${header.toLowerCase()}`}>
                 {header}
               </th>
             ))}
@@ -35,16 +43,16 @@ const Table = ({ trials, status }: TableProps) => {
           {trials.map((trial) => (
             <tr key={trial.trialCode}>
               <td>{trial.trialCode}</td>
-              <td className="table-title">{trial.trialTitle}</td>
+              <td>{trial.trialTitle}</td>
               <td>{trial.trialPhase}</td>
               <td>{trial.trialStatus}</td>
               <td className="table-complete">{trial.trialCompletionDate}</td>
+              <td className="table-acronym">{trial.trialAcronym}</td>
               <td>
                 <a href={trial.trialUrl} target="_blank">
                   Details
                 </a>
               </td>
-              <td className="table-acronym">{trial.trialAcronym}</td>
             </tr>
           ))}
         </tbody>

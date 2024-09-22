@@ -14,50 +14,54 @@ const Form = ({ resetData }: FormProps) => {
   }: FormikContextType<FormValues> = useFormikContext();
 
   return (
-    <div className="filter">
-      <form className="filter-form" onSubmit={handleSubmit}>
-        <label htmlFor="term">Search by code, title or acronym:</label>
-        <input
-          id="term"
-          name="term"
-          type="text"
-          placeholder="Type here"
-          onChange={handleChange}
-          value={values.term}
-        />
-        <button className="button-primary" type="submit">
-          Search
-        </button>
+    <div className="form-wrapper">
+      <form className="form" onSubmit={handleSubmit}>
+        <div className="form-search">
+          <label htmlFor="term">Search</label>
+          <input
+            id="term"
+            name="term"
+            type="text"
+            placeholder="treatment study"
+            onChange={handleChange}
+            value={values.term}
+          />
+        </div>
 
-        <div className="filter-select">
-          <select value={values.status} onChange={handleChange} name="status">
+        <div className="form-select">
+          <label htmlFor="status">Status</label>
+          <select
+            value={values.status}
+            onChange={handleChange}
+            id="status"
+            name="status"
+          >
             {statusList.map((sts) => (
               <option key={sts.text} value={sts.value}>
                 {sts.text}
               </option>
             ))}
           </select>
+        </div>
 
-          <select value={values.phase} onChange={handleChange} name="phase">
+        <div className="form-select">
+          <label htmlFor="phase">Phase</label>
+          <select
+            value={values.phase}
+            onChange={handleChange}
+            id="phase"
+            name="phase"
+          >
             {phaseList.map((phs) => (
               <option key={phs.text} value={phs.value}>
                 {phs.text}
               </option>
             ))}
           </select>
-          <button
-            className="button-primary"
-            onClick={(e) => {
-              handleReset(e);
-              resetData();
-            }}
-          >
-            Reset
-          </button>
         </div>
 
-        <div>
-          <label htmlFor="date">Completed on</label>
+        <div className="form-date">
+          <label htmlFor="date">Completion date</label>
           <input
             id="date"
             name="date"
@@ -66,6 +70,22 @@ const Form = ({ resetData }: FormProps) => {
             onChange={handleChange}
             value={values.date}
           />
+        </div>
+
+        <div className="form-buttons">
+          <button className="button-submit" type="submit">
+            Submit
+          </button>
+          <button
+            className="button-reset"
+            type="button"
+            onClick={(e) => {
+              handleReset(e);
+              resetData();
+            }}
+          >
+            Reset
+          </button>
         </div>
       </form>
     </div>

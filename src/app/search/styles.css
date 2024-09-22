@@ -4,55 +4,18 @@ main {
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  @media (max-width: 900px) {
+    gap: 16px;
+  }
 }
 
 h1 {
   color: var(--font);
   font-size: 32px;
-  margin-top: 16px;
-}
+  margin-top: 12px;
 
-h2 {
-  color: var(--font);
-  font-size: 24px;
-}
-
-.button-primary {
-  background-color: var(--primary-red);
-  border: 0;
-  border-radius: 99px;
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
-  padding: 16px 32px;
-
-  @media (max-width: 1150px) {
-    padding: 8px 16px;
+  @media (max-width: 900px) {
+    font-size: 24px;
   }
-}
-
-.button-primary:hover {
-  background-color: var(--secondary-red);
-}
-
-.button-secondary {
-  background-color: white;
-  border: 1px solid var(--primary-red);
-  border-radius: 99px;
-  cursor: pointer;
-  font-weight: bold;
-  padding: 16px 32px;
-
-  @media (max-width: 1150px) {
-    padding: 0px 16px;
-  }
-}
-
-.button-secondary:hover {
-  color: var(--secondary-red);
-}
-
-.button-secondary:disabled {
-  color: var(--primary-gray);
-  border: 1px solid var(--primary-gray);
 }

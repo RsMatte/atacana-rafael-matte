@@ -4,6 +4,6 @@ export const tableHeaders = [
   'Phase',
   'Status',
   'Complete',
-  'Url',
   'Acronym',
+  'Url',
 ];
