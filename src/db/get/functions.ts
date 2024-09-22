@@ -40,7 +40,8 @@ export const filterTrials = async ({
       (!dateFormatted || data[i].trialCompletionDate.includes(dateFormatted)) &&
       (!term ||
         data[i].trialTitle.toLowerCase().includes(lowerCasedTerm) ||
-        data[i].trialAcronym.toLowerCase().includes(lowerCasedTerm))
+        data[i].trialAcronym.toLowerCase().includes(lowerCasedTerm) ||
+        data[i].trialCode.toLowerCase().includes(lowerCasedTerm))
     ) {
       filteredData.push(data[i]);
     }
