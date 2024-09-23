@@ -43,6 +43,7 @@ const Pagination = ({
     <div className="pagination">
       <div className="pagination-buttons">
         <button
+          data-testid="previous-page-button"
           disabled={isPreviousPageDisabled}
           onClick={() => clickPreviousPage(values)}
         >
@@ -52,6 +53,7 @@ const Pagination = ({
           page {currentPage} of {totalPages}
         </span>
         <button
+          data-testid="next-page-button"
           disabled={isNextPageDisabled}
           onClick={() => clickNextPage(values)}
         >

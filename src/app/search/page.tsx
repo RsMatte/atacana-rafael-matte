@@ -8,7 +8,7 @@ export default async function Search() {
   return (
     <main>
       <Header />
-      <h1>Browse Pharma Trials</h1>
+      <h1 data-testid="page-h1">Browse Pharma Trials</h1>
       <MainContent initialData={data} />
     </main>
   );

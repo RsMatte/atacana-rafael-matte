@@ -8,28 +8,28 @@ const Table = ({ trials, status }: TableProps) => {
 
   if (isLoading)
     return (
-      <div className="skeleton-wrapper">
+      <div data-testid="table-skeleton" className="skeleton-wrapper">
         <div className="table-skeleton" />
       </div>
     );
 
   if (hasError)
     return (
-      <div className="status-wrapper">
+      <div data-testid="table-error" className="status-wrapper">
         <span>Error fetching trials, please try again later</span>
       </div>
     );
 
   if (trials.length === 0)
     return (
-      <div className="status-wrapper">
+      <div data-testid="table-empty-data-message" className="status-wrapper">
         <span>No data found. Try different filters</span>
       </div>
     );
 
   return (
     <div className="table-wrapper">
-      <table className="table">
+      <table data-testid="main-table" className="table">
         <thead>
           <tr className="table-header">
             {tableHeaders.map((header) => (

@@ -12,14 +12,14 @@ export const getData = async () => {
 };
 
 const readCsvFile: () => Promise<Trial[]> = () =>
-  new Promise((resolve, reject) => {
+  new Promise((resolve) => {
     const content: Trial[] = [];
 
     fs.createReadStream(filePath)
       .pipe(parse(defaultOptions))
       .on('error', (error) => {
         console.log(error);
-        reject(error);
+        resolve([]);
       })
       .on('data', (row) => {
         content.push(row);
