@@ -19,7 +19,7 @@ GET: **/api/get** - { page: required, term: optional, status: optional, phase: o
 
 Since the csv database is light, with approximately 4200 lines or 770kb, I decided to use the file itself as the database, keeping the project much simpler. The database is read with the help of the third party library [fast-csv](https://www.npmjs.com/package/fast-csv), which uses the [Node File System](https://nodejs.org/api/fs.html) to create a read stream and parse the file. The file is read only once per route, and then **saved in the variable data** on the server, so subsequently fetches only interact with the project's memory and are much faster.
 
-![wireframe](https://github.com/user-attachments/assets/3a0b6403-1e16-493c-b319-c7b3cbb8e31d)
+![wireframe-v2](https://github.com/user-attachments/assets/62e0ed76-ca08-41da-8525-eb65407aff1d)
 
 This design structure was made with a assumption that the database is not updated frequently. For future changes, if the database is updated occasionally, it could be uploaded to s3 and downloaded by the project instead of being "hardcoded" into it. If the database is updated frequently or if there are plans of implementing write operations, then the best way would be to convert the csv to a regular database.
 
