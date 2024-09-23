@@ -1,6 +1,7 @@
 .pagination {
   align-items: center;
   display: flex;
+  font-size: 14px;
   justify-content: center;
   margin-bottom: 16px;
   position: relative;
@@ -50,7 +51,7 @@
     }
   }
 
-  button:hover {
+  button:hover:enabled {
     background-color: var(--primary-gray);
   }
 }

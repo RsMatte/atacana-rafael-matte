@@ -38,6 +38,7 @@
     border: 1px solid var(--primary-gray);
     border-radius: 12px;
     color: var(--font);
+    cursor: pointer;
     font-weight: bold;
     height: 52px;
     width: 170px;
@@ -85,6 +86,7 @@
     border: 1px solid var(--primary-gray);
     border-radius: 12px;
     color: var(--font);
+    cursor: pointer;
     font-weight: bold;
     height: 52px;
     padding: 16px;
@@ -125,6 +127,10 @@
   @media (max-width: 900px) {
     grid-column: 1;
     grid-row: 2;
+  }
+
+  input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
   }
 
   input {

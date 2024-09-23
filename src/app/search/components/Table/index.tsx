@@ -23,7 +23,7 @@ const Table = ({ trials, status }: TableProps) => {
   if (trials.length === 0)
     return (
       <div data-testid="table-empty-data-message" className="status-wrapper">
-        <span>No data found. Try different filters</span>
+        <span>No data found. Please try different filters</span>
       </div>
     );
 

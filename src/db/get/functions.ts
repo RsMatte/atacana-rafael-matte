@@ -37,7 +37,7 @@ export const filterTrials = async ({
     if (
       (!phase || data[i].trialPhase.includes(phase)) &&
       (!status || data[i].trialStatus.includes(status)) &&
-      (!dateFormatted || data[i].trialCompletionDate.includes(dateFormatted)) &&
+      (!dateFormatted || data[i].trialCompletionDate === dateFormatted) &&
       (!term ||
         data[i].trialTitle.toLowerCase().includes(lowerCasedTerm) ||
         data[i].trialAcronym.toLowerCase().includes(lowerCasedTerm) ||

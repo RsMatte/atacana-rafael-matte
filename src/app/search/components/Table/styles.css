@@ -123,11 +123,15 @@
   }
 
   th {
-    font-size: 14px;
+    font-size: 15px;
     padding: 10px 16px;
     text-align: left;
     background-color: var(--primary-red);
     color: white;
+
+    @media (max-width: 1200px) {
+      font-size: 13px;
+    }
 
     @media (max-width: 1200px) {
       font-size: 12px;
