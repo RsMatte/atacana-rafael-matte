@@ -29,7 +29,8 @@ describe('getTrials function', () => {
     expect(filterTrialsMock).toHaveBeenCalledWith({
       data: dbData,
       page: 1,
-      date: '',
+      from: '',
+      to: '',
       status: '',
       term: '',
       phase: '',

@@ -29,7 +29,7 @@ const Form = ({ resetData }: FormProps) => {
           />
         </div>
 
-        <div className="form-select">
+        <div className="form-select form-status">
           <label htmlFor="status">Status</label>
           <select
             value={values.status}
@@ -46,7 +46,7 @@ const Form = ({ resetData }: FormProps) => {
           </select>
         </div>
 
-        <div className="form-select">
+        <div className="form-select form-phase">
           <label htmlFor="phase">Phase</label>
           <select
             value={values.phase}
@@ -63,16 +63,28 @@ const Form = ({ resetData }: FormProps) => {
           </select>
         </div>
 
-        <div className="form-date">
-          <label htmlFor="date">Completion date</label>
+        <div className="form-date form-from">
+          <label htmlFor="from">Completion date from</label>
           <input
-            id="date"
-            name="date"
+            id="from"
+            name="from"
+            type="date"
+            onChange={handleChange}
+            value={values.from}
+            data-testid="from-input"
+          />
+        </div>
+
+        <div className="form-date form-to">
+          <label htmlFor="to">Completion date to</label>
+          <input
+            id="to"
+            name="to"
             type="date"
             max="2025-12-31"
             onChange={handleChange}
-            value={values.date}
-            data-testid="date-input"
+            value={values.to}
+            data-testid="to-input"
           />
         </div>
 

@@ -15,7 +15,7 @@ Open [http://localhost:3000/search](http://localhost:3000/search) with your brow
 Since the challenge required using React and involved fetching data of a database, I decided to use Next.js, since with a single application, we can resolve both requirements. The project has a single page that allows users to navigate through trials information in groups of up to 10, filter them by status, phase and/or completion date, and also type a search term to query them by code, title or acronym. All the filters and the search term are cumulative, meaning only the trials that match every condition will be displayed.
 
 Page: **/search**  
-GET: **/api/get** - { page: required, term: optional, status: optional, phase: optional, date: optional }  
+GET: **/api/get** - { page: required, term: optional, status: optional, phase: optional, from: optional, to: optional }
 
 Since the csv database is light, with approximately 4200 lines or 770kb, I decided to use the file itself as the database, keeping the project much simpler. The database is read with the help of the third party library [fast-csv](https://www.npmjs.com/package/fast-csv), which uses the [Node File System](https://nodejs.org/api/fs.html) to create a read stream and parse the file. The file is read only once per route, and then **saved in the variable data** on the server, so subsequently fetches only interact with the project's memory and are much faster.
 

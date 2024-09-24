@@ -1,6 +1,7 @@
 export const params = {
   page: 1,
-  date: '01-01-2022',
+  from: '01-01-2005',
+  to: '01-01-2022',
   phase: '2',
   status: 'Completed',
   term: 'term',

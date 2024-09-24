@@ -136,6 +136,10 @@
     @media (max-width: 1200px) {
       font-size: 12px;
     }
+
+    @media (max-width: 400px) {
+      padding: 10px;
+    }
   }
 
   .table-header th:first-child {

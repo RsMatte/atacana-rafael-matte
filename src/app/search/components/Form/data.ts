@@ -4,7 +4,8 @@ export const initialValues: FormValues = {
   term: '',
   status: '',
   phase: '',
-  date: '',
+  from: '',
+  to: '',
 };
 
 export const statusList = [

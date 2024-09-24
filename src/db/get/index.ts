@@ -10,11 +10,12 @@ export const getTrials = async ({
   term = '',
   status = '',
   phase = '',
-  date = '',
+  from = '',
+  to = '',
 }: GetTrials): Promise<FetchTrialsResponse> => {
   const data = await getData();
 
   if (term.match(codeRegex)) return findTrialByCode(data, term);
 
-  return filterTrials({ data, term, page, status, phase, date });
+  return filterTrials({ data, term, page, status, phase, from, to });
 };

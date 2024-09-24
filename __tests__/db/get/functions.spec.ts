@@ -25,7 +25,8 @@ describe('db functions', () => {
       term: 'NCT00',
       status: '',
       phase: '',
-      date: '',
+      from: '',
+      to: '',
     });
 
     expect(response).toEqual({ trials: dbData, count: 3 });
@@ -38,7 +39,8 @@ describe('db functions', () => {
       term: '',
       status: 'Terminated',
       phase: '1',
-      date: '',
+      from: '',
+      to: '',
     });
 
     expect(response).toEqual({ trials: [dbData[2]], count: 1 });
@@ -51,7 +53,8 @@ describe('db functions', () => {
       term: '',
       status: '',
       phase: '',
-      date: '2006-1-1',
+      from: '2005-01-01',
+      to: '2007-01-01',
     });
 
     expect(response).toEqual({ trials: [dbData[1]], count: 1 });

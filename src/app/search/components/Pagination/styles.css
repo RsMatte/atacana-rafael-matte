@@ -6,6 +6,7 @@
   margin-bottom: 16px;
   position: relative;
   max-width: 1275px;
+  min-height: 16px;
   width: 95%;
 
   @media (max-width: 1150px) {

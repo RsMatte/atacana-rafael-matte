@@ -3,12 +3,6 @@ import type { FilterTrials } from './types';
 
 const LIMIT = 10;
 
-const formatDate = (date: string) => {
-  const [year, month, day] = date.split('-');
-  if (!month || !day || !year) return '';
-  return `${month.replace('0', '')}/${day.replace('0', '')}/${year}`;
-};
-
 export const findTrialByCode = async (data: Trial[], term: string) => {
   const trial = data.find((elem) => elem.trialCode === term);
 
@@ -23,7 +17,8 @@ export const filterTrials = async ({
   term,
   status,
   phase,
-  date,
+  from,
+  to,
 }: FilterTrials) => {
   const filteredData = [];
 
@@ -31,13 +26,18 @@ export const filterTrials = async ({
   const higherLimit = page * LIMIT;
 
   const lowerCasedTerm = term.toLowerCase();
-  const dateFormatted = formatDate(date);
+  const fromDateFormatted =
+    from && !isNaN(Date.parse(from)) ? new Date(from) : '';
+  const toDateFormatted = to && !isNaN(Date.parse(to)) ? new Date(to) : '';
 
   for (let i = 0; i < data.length; i++) {
     if (
       (!phase || data[i].trialPhase.includes(phase)) &&
       (!status || data[i].trialStatus.includes(status)) &&
-      (!dateFormatted || data[i].trialCompletionDate === dateFormatted) &&
+      (!fromDateFormatted ||
+        new Date(data[i].trialCompletionDate) > fromDateFormatted) &&
+      (!toDateFormatted ||
+        new Date(data[i].trialCompletionDate) < toDateFormatted) &&
       (!term ||
         data[i].trialTitle.toLowerCase().includes(lowerCasedTerm) ||
         data[i].trialAcronym.toLowerCase().includes(lowerCasedTerm) ||

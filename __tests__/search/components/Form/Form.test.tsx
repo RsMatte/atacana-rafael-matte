@@ -23,16 +23,18 @@ describe('Form component', () => {
     render(<Form resetData={jest.fn()} />);
 
     const searchInput = screen.getByTestId('search-input');
-    const dateInput = screen.getByTestId('date-input');
+    const fromDateInput = screen.getByTestId('from-input');
+    const toDateInput = screen.getByTestId('to-input');
     const statusSelect = screen.getByTestId('status-select');
     const phaseSelect = screen.getByTestId('phase-select');
 
     fireEvent.change(searchInput, { target: { value: 'new value' } });
-    fireEvent.change(dateInput, { target: { value: '2020-05-24' } });
+    fireEvent.change(fromDateInput, { target: { value: '2020-05-24' } });
+    fireEvent.change(toDateInput, { target: { value: '2022-01-01' } });
     fireEvent.change(statusSelect, { target: { value: 'Completed' } });
     fireEvent.change(phaseSelect, { target: { value: '1' } });
 
-    expect(handleChangeMock).toHaveBeenCalledTimes(4);
+    expect(handleChangeMock).toHaveBeenCalledTimes(5);
   });
 
   it('should call handleChange function correctly', async () => {

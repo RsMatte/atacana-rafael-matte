@@ -6,7 +6,8 @@ export type FormValues = {
   term: string;
   status: string;
   phase: string;
-  date: string;
+  from: string;
+  to: string;
 };
 
 export enum Status {

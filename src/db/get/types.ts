@@ -5,7 +5,8 @@ export type GetTrials = {
   term?: string;
   status?: string;
   phase?: string;
-  date?: string;
+  from?: string;
+  to?: string;
 };
 
 export type FilterTrials = {
@@ -14,5 +15,6 @@ export type FilterTrials = {
   term: string;
   status: string;
   phase: string;
-  date: string;
+  from?: string;
+  to?: string;
 };
